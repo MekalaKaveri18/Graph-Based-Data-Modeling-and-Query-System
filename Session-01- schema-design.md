@@ -5,6 +5,7 @@
 **Duration:** ~45 mins  
 **Goal:** Decide on storage layer and design a normalized SQLite schema from the raw dataset
 
+
 ---
 
 ## Context
