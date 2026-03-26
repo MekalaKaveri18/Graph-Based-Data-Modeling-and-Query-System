@@ -1,6 +1,6 @@
 # Session 01 — Schema Design & Database Choice
 
-**Date:** 2025-03-24 
+**Date:** 2026-03-24
 **Tool:** Claude.ai  
 **Duration:** ~45 mins  
 **Goal:** Decide on storage layer and design a normalized SQLite schema from the raw dataset
