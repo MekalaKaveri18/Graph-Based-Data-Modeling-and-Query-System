@@ -1,0 +1,21 @@
+{
+  "name": "graph-query-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "ingest": "node scripts/ingestData.js",
+    "build": "echo 'No build step needed'"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "groq-sdk": "^0.9.1",
+    "sql.js": "^1.12.0",
+    "xlsx": "^0.18.5"
+  }
+}

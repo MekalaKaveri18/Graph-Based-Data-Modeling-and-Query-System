@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: graph-query-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+
+  - type: static
+    name: graph-query-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://graph-query-backend.onrender.com
