@@ -259,7 +259,47 @@ Try these in the chat interface:
 
 ---
 
-## AI Coding Session Logs
+# AI Coding Session Logs
 
-See `ai-session-logs/` directory for exported session transcripts from Claude Code / Cursor used during development.
->>>>>>> d153826 (Initial commit — SAP O2C graph query system)
+This directory contains session transcripts and summaries from Claude.ai sessions used during development of the Graph Query System.
+
+Each file documents:
+- The prompts used
+- What the AI generated
+- What was manually changed and why
+- Key architectural decisions made during the session
+
+---
+
+## Session Index
+
+| # | Session | Key Topic | Outcome |
+|---|---------|-----------|---------|
+| [01](./session-01-schema-design.md) | Schema Design & DB Choice | SQLite vs Neo4j tradeoffs, normalized schema from SAP columns | `schema.sql` with 8 tables + FK indexes |
+| [02](./session-02-ingestion-script.md) | Data Ingestion Script | Fuzzy filename matching, FK-ordered insertion, error handling | `ingest.js` with dry-run support |
+| [03](./session-03-graph-builder.md) | In-Memory Graph Construction | FK → Cytoscape node/edge derivation, 1-hop expansion API | `graph-builder.js`, `/api/graph`, `/api/node/:id/expand` |
+| [04](./session-04-llm-prompting.md) | LLM Prompting Strategy | Two-step NL→SQL→NL pipeline, GUARDRAIL sentinel, result truncation | `prompts.js`, `groq-client.js`, `chat.js` |
+| [05](./session-05-frontend-cytoscape.md) | React Frontend + Cytoscape | Split layout, node highlighting, collapsible SQL display | Full React frontend |
+| [06](./session-06-guardrails.md) | Guardrails | Regex pre-filter + LLM sentinel, whitelist design, 20-case test suite | `guardrail.js` |
+
+---
+
+## How These Logs Were Generated
+
+Primary tool: **Claude.ai** (claude.ai chat interface)  
+Secondary: **Claude Code** for file-level edits and debugging iterations
+
+Sessions were conducted iteratively — each session built on the working output of the previous one. The logs document the actual prompts used, AI outputs, and manual modifications made during development.
+
+---
+
+## Prompt Quality Observations
+
+Things that improved AI output quality during this project:
+
+1. **Providing the full schema in context** — SQL generation quality jumped significantly when the model had all table/column names
+2. **Asking for tradeoffs before asking for code** — Session 01 and 04 both started with architecture questions, which led to better-justified decisions
+3. **Sending error messages back to the LLM** — The FK constraint bug in Session 02 was fixed in one follow-up by pasting the exact error
+4. **Explicit format constraints** — Specifying "return ONLY JSON, no backticks, no markdown" eliminated a whole class of parsing errors
+5. **Testing edge cases with the AI** — Session 06's 20-case test prompt caught the whitelist-ordering bug before it shipped
+
