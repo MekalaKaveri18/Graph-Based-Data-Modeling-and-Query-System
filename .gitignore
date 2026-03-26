@@ -3,4 +3,3 @@ node_modules/
 frontend/dist/
 .DS_Store
 *.log
-# graph.db is intentionally committed for deployment
