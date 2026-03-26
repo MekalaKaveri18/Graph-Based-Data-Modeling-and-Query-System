@@ -4,12 +4,10 @@ services:
     env: node
     rootDir: backend
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: node server.js
     envVars:
       - key: GROQ_API_KEY
         sync: false
-      - key: PORT
-        value: 3001
       - key: NODE_ENV
         value: production
 
