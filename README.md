@@ -8,7 +8,7 @@ A context graph system with an LLM-powered natural language query interface for 
 
 ## Live Demo
 
-> Add your deployed URL here
+> https://graph-based-data-modeling-and-query-mmhv.onrender.com/
 
 ## Architecture
 
